@@ -10,11 +10,13 @@ import Home from './src/telas/Home';
 import CatalogoMock from './src/mocks/catalogo';
 import Catalogo from './src/telas/Catalogo';
 
-import ListaDeDesejos from './src/telas/ListaDeDesejos';
 import ListaDesejosMock from './src/mocks/listadesejos';
+import ListaDeDesejos from './src/telas/ListaDeDesejos';
 
 import Contato from './src/telas/Contato';
 import ContatoMock from './src/mocks/contato';
+
+import Produtos from './src/telas/Produtos';
 
 function MenuCatalogo() {
   return <SafeAreaView>
@@ -54,6 +56,8 @@ function TabsMenu() {
             iconName = focused ? 'list' : 'list-outline';
           } else if (route.name === 'Contato') {
             iconName = focused ? 'call' : 'call-outline';
+          } else if (route.name === 'Produtos') {
+            iconName = focused ? 'list' : 'list-outline';
           }
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -66,6 +70,7 @@ function TabsMenu() {
       <Tab.Screen name="Catálogo" component={MenuCatalogo} options={{ headerShown: false }} />
       <Tab.Screen name="Lista de Desejos" component={MenuListaDesejos} options={{ headerShown: false }} />
       <Tab.Screen name="Contato" component={MenuContato} options={{ headerShown: false }} />
+      <Tab.Screen name="Produtos" component={Produtos} options={{ headerShown: false }} />
     </Tab.Navigator>
   )
 }
