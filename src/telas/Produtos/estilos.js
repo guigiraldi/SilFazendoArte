@@ -28,6 +28,7 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
     },
     posicao: {
+        
         flexDirection: 'row',
         alignItems: 'center',
     },
