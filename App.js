@@ -1,4 +1,6 @@
 import React from 'react';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,6 +19,7 @@ import Contato from './src/telas/Contato';
 import ContatoMock from './src/mocks/contato';
 
 import Produtos from './src/telas/Produtos';
+import ListaDesejos from './src/telas/ListaDesejos';
 
 function MenuCatalogo() {
   return <SafeAreaView>
@@ -58,6 +61,8 @@ function TabsMenu() {
             iconName = focused ? 'call' : 'call-outline';
           } else if (route.name === 'Produtos') {
             iconName = focused ? 'list' : 'list-outline';
+          } else if (route.name === 'Lista') {
+            iconName = focused ? 'list' : 'list-outline';
           }
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -71,6 +76,7 @@ function TabsMenu() {
       <Tab.Screen name="Lista de Desejos" component={MenuListaDesejos} options={{ headerShown: false }} />
       <Tab.Screen name="Contato" component={MenuContato} options={{ headerShown: false }} />
       <Tab.Screen name="Produtos" component={Produtos} options={{ headerShown: false }} />
+      <Tab.Screen name="Lista" component={ListaDesejos} options={{ headerShown: false }} />
     </Tab.Navigator>
   )
 }
