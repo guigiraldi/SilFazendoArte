@@ -10,7 +10,12 @@ export default function Item ({nome, descricao, preco}){
     const [quantidade, setQuantidade] = useState(1);
     const [total, setTotal] = useState(preco);
     const [expandir, setExpandir] = useState(false);
-    const [adicionar, setAdicionar] = useState(0);
+    const dadosLista = {
+        nome: {nome},
+        descricao: {descricao},
+        quantidade: {quantidade},
+        total: {total}, 
+    };
 
     //Método de cálculo do valor total
     const calculaTotal = (quantidade) => {
@@ -28,11 +33,10 @@ export default function Item ({nome, descricao, preco}){
         //Negar o estado atual
         setExpandir(!expandir);
     }
-
-    //Método para adicionar o produto na lista
-    const adicionaLista = () => {
-        setAdicionar(adicionar+1)
-    }
+    
+    const enviarParaListaDesejos = () => {
+        setDadosListaDesejos(dadosLista);
+    };
 
     return <> 
         <TouchableOpacity style={estilos.produtos} onPress={inverteExpandir}>
@@ -50,11 +54,10 @@ export default function Item ({nome, descricao, preco}){
                     <Texto>Total </Texto>
                     <Texto>{ Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(total) }</Texto>
                 </View>
-                <Button title="Adicionar" onPress={adicionaLista}/>
+                <Button title="Adicionar" onPress={enviarParaListaDesejos}/>
             </View>
         }
         <View style={estilos.divisor}></View>
-        <Texto>{adicionar}</Texto>
         
     </>
 }
