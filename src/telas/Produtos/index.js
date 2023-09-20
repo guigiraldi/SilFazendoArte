@@ -1,8 +1,9 @@
 import React from "react";
 import { FlatList } from "react-native";
-
+import { Video, ResizeMode } from 'expo-av';
 import Item from "./Item";
 import TelaPadrao from "../../componentes/TelaPadrao";
+import estilos from './estilos';
 
 const produtos = [
     {
@@ -26,11 +27,26 @@ const produtos = [
 ];
 
 export default function Produtos (){
-    return <TelaPadrao>
+
+    const video = React.useRef(null);
+    const [status, setStatus] = React.useState({});
+
+    
+    return (
+        <TelaPadrao>
+            <Video ref={video}
+                style={estilos.video}
+                source={require('./../../../assets/video.mp4')}
+                useNativeControls
+                resizeMode={ResizeMode.CONTAIN}
+                isLooping
+                onPlaybackStatusUpdate={status => setStatus(() => status)} 
+            />
             <FlatList
                 data={produtos}
                 renderItem={({item})=>(<Item {...item}/>)}
                 keyExtractor={({id})=>(String(id))}
             />
         </TelaPadrao>
+    );
 }

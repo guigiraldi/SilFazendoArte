@@ -1,9 +1,29 @@
-import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Image, Button } from "react-native";
 import Texto from "../../../componentes/Texto";
 import Botao from "../../../componentes/Botao";
+import { Audio } from 'expo-av'
 
 export default function Produto({ produto: { titulo, descricao, precin, imagem, id } }) {
+
+  const [audioStatus, setAudioStatus] = useState(false);
+  const [sound, setSound] = useState(new Audio.Sound());
+
+  useEffect(() => {
+    (
+      async () => {
+      console.log('status', audioStatus)
+      if (audioStatus) {
+        await sound.loadAsync(require('../../../../assets/audio.mp4'))
+        try { await sound.playAsync() } catch (e) { console.log(e) }
+      }
+      else {
+        await sound.stopAsync()
+        await sound.unloadAsync()
+      }
+    })()
+  }, [audioStatus])
+
   return <View key={id} style={estilos.produto}>
     <Image source={imagem} style={estilos.imagem} />
     <View style={estilos.conteudo}>
@@ -15,7 +35,7 @@ export default function Produto({ produto: { titulo, descricao, precin, imagem, 
 
       <View style={estilos.base}>
         <Texto style={estilos.preco}>{precin}</Texto>
-        <Botao botao="Adicionar" />
+        <Button style={estilos.botao} title="Adicionar" onPress={() => setAudioStatus(!audioStatus)} />
       </View>
 
     </View>
@@ -79,4 +99,17 @@ const estilos = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
   },
+  botao: {
+    width: 90,
+    height: 30,
+    backgroundColor: "#660066",
+    borderRadius: 5,
+    justifyContent: "center",
+  },
+  botaoTexto: {
+    alignSelf: "center",
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "bold",
+  }
 });

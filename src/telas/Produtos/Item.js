@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, TouchableOpacity } from "react-native";
+import { Audio } from 'expo-av'
 
 import Texto from '../../componentes/Texto';
 import CampoInteiro from "../../componentes/CampoInteiro";
 import estilos from './estilos';
+import { useEffect } from "react";
 
 export default function Item ({nome, descricao, preco}){
 
     const [quantidade, setQuantidade] = useState(1);
     const [total, setTotal] = useState(preco);
     const [expandir, setExpandir] = useState(false);
+
     const dadosLista = {
         nome: {nome},
         descricao: {descricao},
@@ -33,11 +36,23 @@ export default function Item ({nome, descricao, preco}){
         //Negar o estado atual
         setExpandir(!expandir);
     }
-    
-    const enviarParaListaDesejos = () => {
-        setDadosListaDesejos(dadosLista);
-    };
 
+    const [audioStatus, setAudioStatus] = useState(false);
+    const [sound, setSound] = useState(new Audio.Sound());
+
+    useEffect(()=> {
+        (async() => {
+            console.log('status', audioStatus)
+            if (audioStatus) {
+                await sound.loadAsync(require('../../../assets/audio.mp4'))
+                try {await sound.playAsync()} catch (e) { console.log(e)}
+            }
+            else{
+                await sound.stopAsync()
+                await sound.unloadAsync()
+            }
+        })()
+    },[audioStatus])
     return <> 
         <TouchableOpacity style={estilos.produtos} onPress={inverteExpandir}>
             <Texto style={estilos.nome}>{ nome }</Texto>
@@ -54,7 +69,7 @@ export default function Item ({nome, descricao, preco}){
                     <Texto>Total </Texto>
                     <Texto>{ Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(total) }</Texto>
                 </View>
-                <Button title="Adicionar" onPress={enviarParaListaDesejos}/>
+                <Button title="Adicionar" onPress={() => setAudioStatus(!audioStatus)}/>
             </View>
         }
         <View style={estilos.divisor}></View>

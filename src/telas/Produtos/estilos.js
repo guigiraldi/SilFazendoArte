@@ -1,3 +1,4 @@
+import { createNavigatorFactory } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet } from "react-native";
 
@@ -39,5 +40,10 @@ export default StyleSheet.create({
         marginHorizontal: 24,
         borderBottomColor: "purple",
         borderBottomWidth: 1,
+    },
+    video: {
+        width: 400,
+        height: 250,
+        alignSelf: "center",
     }
 });
