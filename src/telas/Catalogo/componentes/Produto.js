@@ -40,7 +40,7 @@ export default function Produto({ produto: { titulo, descricao, precin, imagem, 
 
       <View style={estilos.base}>
         <Texto style={estilos.preco}>{precin}</Texto>
-        <Button style={estilos.botao} title="Adicionar" onPress={adicionarLista} />
+        <Button style={estilos.botao} title="Adicionar" onPress={() => setAudioStatus(!audioStatus)} />
       </View>
 
     </View>

@@ -5,7 +5,7 @@ import Produto from "./componentes/Produto";
 import { Video, ResizeMode } from 'expo-av';
 
 export default function Catalogo({ topo, produtos }) {
-  const [searchText, setSearchText] = useState(""); // Estado para armazenar o texto de pesquisa
+  const [barraPesquisa, setBarraPesquisa] = useState("");
 
   const renderProduto = ({ item }) => (
     <Produto produto={item} />
@@ -14,14 +14,13 @@ export default function Catalogo({ topo, produtos }) {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
 
-  // Função para filtrar os produtos com base no texto de pesquisa
   const filtrarProdutos = (termo) => {
     return produtos.lista.filter((produto) =>
       produto.titulo.toLowerCase().includes(termo.toLowerCase())
     );
   };
 
-  const produtosFiltrados = filtrarProdutos(searchText);
+  const produtosFiltrados = filtrarProdutos(barraPesquisa);
 
   return (
     <ScrollView style={estilos.container}>
@@ -30,12 +29,11 @@ export default function Catalogo({ topo, produtos }) {
         style={estilos.textInput}
         placeholder="Pesquisar"
         placeholderTextColor="white"
-        value={searchText}
-        onChangeText={(text) => setSearchText(text)}
-        // Ação a ser executada quando o Enter for pressionado
+        value={barraPesquisa}
+        onChangeText={(text) => setBarraPesquisa(text)}
+
         onSubmitEditing={() => {
-          const produtosFiltrados = filtrarProdutos(searchText);
-          // Faça algo com os produtos filtrados, como exibi-los em uma lista
+          const produtosFiltrados = filtrarProdutos(barraPesquisa);
         }}
       />
       <Video

@@ -201,7 +201,7 @@ const catalogo = {
         ]
     },
     
-    search: "", // Termo de pesquisa
+    pesquisa: "",
     filtrarProdutos: (termo) => {
         catalogo.search = termo;
   },

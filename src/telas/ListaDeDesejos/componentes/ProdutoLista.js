@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, View, Image, Alert, Dimensions } from "react-native";
+import { StyleSheet, TouchableOpacity, View, Image, Alert, Dimensions, Button } from "react-native";
 import Texto from "../../../componentes/Texto";
 
 const { width } = Dimensions.get('window');
@@ -17,9 +17,7 @@ export default function ProdutoLista({ produto: { titulo, descricao, imagem, id 
 
                 <View style={estilos.base}>
                     {/* Aqui vai ficar o botão la pra pessoa acrescentar ou diminuir a quantidade do produto escolhido (Esse botão ai embaixo é só pra nao ficar sem nada) */}
-                    <TouchableOpacity style={estilos.botao} onPress={() => { Alert.alert("Pedido Removido da sua Lista de Desejos!") }}>
-                        <Texto style={estilos.botaoTexto}>{"Remover da Lista"}</Texto>
-                    </TouchableOpacity>
+                    <Button style={estilos.botao} title="Remover" onPress={() => setAudioStatus(!audioStatus)}/>
                 </View>
 
             </View>
