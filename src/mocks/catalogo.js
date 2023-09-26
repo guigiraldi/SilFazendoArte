@@ -199,7 +199,12 @@ const catalogo = {
                 id: "Toalha1",
             },
         ]
-    }
+    },
+    
+    search: "", // Termo de pesquisa
+    filtrarProdutos: (termo) => {
+        catalogo.search = termo;
+  },
 }
 
 export default catalogo;

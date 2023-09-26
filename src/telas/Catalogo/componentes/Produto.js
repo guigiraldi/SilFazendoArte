@@ -4,7 +4,7 @@ import Texto from "../../../componentes/Texto";
 import Botao from "../../../componentes/Botao";
 import { Audio } from 'expo-av'
 
-export default function Produto({ produto: { titulo, descricao, precin, imagem, id } }) {
+export default function Produto({ produto: { titulo, descricao, precin, imagem, id }, onAdiciona }) { 
 
   const [audioStatus, setAudioStatus] = useState(false);
   const [sound, setSound] = useState(new Audio.Sound());
@@ -24,6 +24,11 @@ export default function Produto({ produto: { titulo, descricao, precin, imagem, 
     })()
   }, [audioStatus])
 
+  const adicionarLista = () => {
+    onAdiciona({ titulo, descricao, precin, imagem, id });
+    setAudioStatus(!audioStatus);
+  };
+
   return <View key={id} style={estilos.produto}>
     <Image source={imagem} style={estilos.imagem} />
     <View style={estilos.conteudo}>
@@ -35,7 +40,7 @@ export default function Produto({ produto: { titulo, descricao, precin, imagem, 
 
       <View style={estilos.base}>
         <Texto style={estilos.preco}>{precin}</Texto>
-        <Button style={estilos.botao} title="Adicionar" onPress={() => setAudioStatus(!audioStatus)} />
+        <Button style={estilos.botao} title="Adicionar" onPress={adicionarLista} />
       </View>
 
     </View>

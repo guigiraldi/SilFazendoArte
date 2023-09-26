@@ -24,6 +24,7 @@ const estilos = StyleSheet.create({
     borderBottomEndRadius: 15,
     borderBottomLeftRadius: 15,
     marginBottom: 5,
+    
   },
   logo: {
     position: "absolute",

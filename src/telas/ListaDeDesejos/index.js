@@ -5,7 +5,6 @@ import ProdutoLista from "./componentes/ProdutoLista";
 import BaseLista from "./componentes/BaseLista";
 
 export default function ListaDeDesejos({ topo, produtos, base }) {
-
   const renderProduto = ({ item }) => (
     <ProdutoLista produto={item} />
   );
@@ -14,19 +13,21 @@ export default function ListaDeDesejos({ topo, produtos, base }) {
     <>
       <FlatList
         ListHeaderComponent={() => {
-          return <>
-            <Topo {...topo} />
-          </>
+          return (
+            <>
+              <Topo {...topo} />
+            </>
+          );
         }}
-
         data={produtos.lista}
         renderItem={renderProduto}
         keyExtractor={({ id }) => id}
-
         ListFooterComponent={() => {
-          return <>
-            <BaseLista {...base} />
-          </>
+          return (
+            <>
+              <BaseLista {...base} />
+            </>
+          );
         }}
       />
     </>
