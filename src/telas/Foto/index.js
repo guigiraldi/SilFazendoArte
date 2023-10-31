@@ -1,9 +1,9 @@
-import React, {useState,  useEffect} from 'react';
-import { View, StyleSheet, Image, Button , TouchableOpacity, Text} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Image, Button, TouchableOpacity, Text } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Camera() {
+export default function CustomCamera() {
 
   //CAMERA
   const [type, setType] = useState(CameraType.back);

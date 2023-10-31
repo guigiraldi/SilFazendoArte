@@ -20,6 +20,7 @@ import ContatoMock from './src/mocks/contato';
 
 import Produtos from './src/telas/Produtos';
 import ListaDesejos from './src/telas/ListaDesejos';
+import Foto from './src/telas/Foto';
 
 function MenuCatalogo() {
   return <SafeAreaView>
@@ -63,7 +64,7 @@ function TabsMenu() {
             iconName = focused ? 'list' : 'list-outline';
           } else if (route.name === 'Lista') {
             iconName = focused ? 'list' : 'list-outline';
-          }
+          } 
           // You can return any component that you like here!
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -77,6 +78,7 @@ function TabsMenu() {
       <Tab.Screen name="Contato" component={MenuContato} options={{ headerShown: false }} />
       <Tab.Screen name="Produtos" component={Produtos} options={{ headerShown: false }} />
       <Tab.Screen name="Lista" component={ListaDesejos} options={{ headerShown: false }} />
+
     </Tab.Navigator>
   )
 }
