@@ -1,18 +1,33 @@
-import React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import { Dimensions } from "react-native";
+import React, { useState } from 'react';
+import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import Texto from './Texto';
-
-const width = Dimensions.get('screen').width;
+import Perfil from './Perfil'; // Importe o componente Perfil
+import { useNavigation } from '@react-navigation/native';
 
 export default function Topo({ titulo }) {
+  const navigation = useNavigation();
+  const [perfilVisible, setPerfilVisible] = useState(false);
 
-  return <>
-    <View style={estilos.header}>
-      <Image source={require('../../assets/logoSil.png')} style={estilos.logo} />
-      <Texto style={estilos.titulo}>{titulo}</Texto>
-    </View>
-  </>
+  const abrirTelaCirculo = () => {
+    setPerfilVisible(true);
+  };
+
+  const fecharTelaCirculo = () => {
+    setPerfilVisible(false);
+  };
+
+  return (
+    <>
+      <View style={estilos.header}>
+        <TouchableOpacity onPress={abrirTelaCirculo}>
+          <Image source={require('../../assets/seta.png')} style={estilos.seta} />
+        </TouchableOpacity>
+        <Image source={require('../../assets/logoSil.png')} style={estilos.logo} />
+        <Texto style={estilos.titulo}>{titulo}</Texto>
+      </View>
+      <Perfil isVisible={perfilVisible} onClose={fecharTelaCirculo} />
+    </>
+  );
 }
 
 const estilos = StyleSheet.create({
@@ -24,7 +39,7 @@ const estilos = StyleSheet.create({
     borderBottomEndRadius: 15,
     borderBottomLeftRadius: 15,
     marginBottom: 5,
-    
+    flexDirection: 'row',
   },
   logo: {
     position: "absolute",
@@ -39,4 +54,9 @@ const estilos = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-})
+  seta: {
+    width: 30,
+    height: 30,
+    marginLeft: 10,
+  },
+});

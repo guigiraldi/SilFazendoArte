@@ -1,32 +1,34 @@
-import React from "react";
-import { FlatList } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { FlatList } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ProdutoItem from './ProdutoItem';
+import TelaPadrao from '../../componentes/TelaPadrao';
+import StatusLista from '../../componentes/StatusLista';
 
-import Item from "./Item";
-import TelaPadrao from "../../componentes/TelaPadrao";
+export default function ListaDesejos() {
+    //Variável de estado da Lista​
+    const [listData, setListData] = useState([]);
+    // Função para carregar os dados da lista do AsyncStorage​
+    const loadListData = async () => {
+        const storedObjectJSON = await AsyncStorage.getItem('ListaDesejos');
+        if (storedObjectJSON !== null) {
+            const storedObject = JSON.parse(storedObjectJSON);
+            setListData(storedObject);
+        }
+    };
+    // Carregua a lista quando o componente for montado​
+    useEffect(() => {
+        loadListData();
+    }, []);
 
-const produtos = [
-    {
-        id: 1,
-        nome: "CESTA INVERNO",
-        descricao: "Cesta de frutas de inverno.",
-        preco: 79.9,
-        quantidade: 1,
-    },
-    {
-        id: 2,
-        nome: "CESTA VERÃO",
-        descricao: "Cesta de frutas de verão",
-        preco: 89.9,
-        quantidade: 2,
-    }
-];
+    //Cálculo do valor total da Lista de Desejos​
+    const val_total = listData.reduce((soma, { preco, quantidade }) => soma + (preco * quantidade), 0);
 
-export default function ListaDesejos (){
-    return <TelaPadrao> 
+    return <TelaPadrao>
+        <StatusLista total={val_total} />
         <FlatList
-                data={produtos}
-                renderItem={({item})=>(<Item {...item}/>)}
-                keyExtractor={({id})=>(String(id))}
-            />
+            data={listData}
+            renderItem={({ item }) => <ProdutoItem {...item} />}
+            keyExtractor={({ id }) => String(id)} />
     </TelaPadrao>
 }

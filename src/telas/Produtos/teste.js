@@ -7,7 +7,7 @@ import CampoInteiro from "../../componentes/CampoInteiro";
 import estilos from './estilos';
 import { useEffect } from "react";
 
-export default function Item ({nome, descricao, preco}){
+export default function ProdutoItem ({nome, descricao, preco}){
 
     const [quantidade, setQuantidade] = useState(1);
     const [total, setTotal] = useState(preco);
