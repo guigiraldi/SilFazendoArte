@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import estilos from './estilos';
 import CampoInteiro from '../../componentes/CampoInteiro';
 import Botao from '../../componentes/Botao';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ProdutoItem({ id, nome, descricao, preco }) {
 

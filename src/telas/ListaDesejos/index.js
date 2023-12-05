@@ -6,9 +6,10 @@ import TelaPadrao from '../../componentes/TelaPadrao';
 import StatusLista from '../../componentes/StatusLista';
 
 export default function ListaDesejos() {
+
     //Variável de estado da Lista​
     const [listData, setListData] = useState([]);
-    // Função para carregar os dados da lista do AsyncStorage​
+    // Função para carregar os dados da lista do AsyncStorage
     const loadListData = async () => {
         const storedObjectJSON = await AsyncStorage.getItem('ListaDesejos');
         if (storedObjectJSON !== null) {
@@ -20,10 +21,8 @@ export default function ListaDesejos() {
     useEffect(() => {
         loadListData();
     }, []);
-
     //Cálculo do valor total da Lista de Desejos​
     const val_total = listData.reduce((soma, { preco, quantidade }) => soma + (preco * quantidade), 0);
-
     return <TelaPadrao>
         <StatusLista total={val_total} />
         <FlatList

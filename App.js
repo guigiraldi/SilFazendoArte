@@ -94,7 +94,7 @@ function App() {
           tabBarInactiveTintColor: 'black',
         })}
       >
-        <Tab.Screen name="Home" component={MenuStack} options={{ headerShown: false }}/>
+        <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
         <Tab.Screen name="Catálogo" component={MenuCatalogo} options={{ headerShown: false }}/>
         <Tab.Screen name="Lista de Desejos" component={MenuListaDesejos} options={{ headerShown: false }}/>
         <Tab.Screen name="Contato" component={MenuContato} options={{ headerShown: false }}/>

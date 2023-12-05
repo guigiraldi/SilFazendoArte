@@ -28,7 +28,7 @@ export default function ProdutoOferta({ imagem, descricaoprod, titulo, precoanti
 
 const estilos = StyleSheet.create({
     prod: {
-        marginTop: 5,
+        marginTop: 2,
         width: width * 0.8,
         height: 120,
         backgroundColor: "#F2F3F4",
