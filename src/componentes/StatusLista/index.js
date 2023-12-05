@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function StatusLista({ total }) {
   return (
     <View style={estilos.container}>
-      <Text style={estilos.texto}>Total da Lista de Desejos: {total}</Text>
+      <Text style={estilos.texto}>Preço Total da Lista: <Text style={estilos.valorTotal}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}</Text></Text>
     </View>
   );
 }
@@ -18,5 +18,9 @@ const estilos = StyleSheet.create({
   },
   texto: {
     fontWeight: 'bold',
+  },
+  valorTotal: {
+    fontSize: 18, // ou qualquer tamanho desejado
+    color: 'purple',
   },
 });

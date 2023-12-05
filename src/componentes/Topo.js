@@ -19,10 +19,10 @@ export default function Topo({ titulo }) {
   return (
     <>
       <View style={estilos.header}>
-        <TouchableOpacity onPress={abrirTelaCirculo}>
+        <TouchableOpacity  style={estilos.seta} onPress={abrirTelaCirculo}>
           <Image source={require('../../assets/seta.png')} style={estilos.seta} />
         </TouchableOpacity>
-        <Image source={require('../../assets/logoSil.png')} style={estilos.logo} />
+        {/* <Image source={require('../../assets/logoSil.png')} style={estilos.logo} /> */}
         <Texto style={estilos.titulo}>{titulo}</Texto>
       </View>
       <Perfil isVisible={perfilVisible} onClose={fecharTelaCirculo} />
@@ -57,6 +57,6 @@ const estilos = StyleSheet.create({
   seta: {
     width: 30,
     height: 30,
-    marginLeft: 10,
+    right: 10,
   },
 });
