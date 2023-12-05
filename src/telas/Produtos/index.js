@@ -57,70 +57,70 @@ const produtos = [
         {
         id: 4,
         nome: "Jogo Americano",
-        preco: 30.0,
+        preco: 37.0,
         descricao: "Conjunto de jogo americano elegante e prático, ideal para tornar suas refeições mais especiais.",
         imagem: JogoAmericano1
         },
         {
         id: 5,
         nome: "Jogo Americano",
-        preco: 30.0,
+        preco: 37.0,
         descricao: "Conjunto de jogo americano elegante e prático, ideal para tornar suas refeições mais especiais.",
         imagem: JogoAmericano2
         },
         {
         id: 6,
         nome: "Jogo Americano",
-        preco: 30.0,
+        preco: 37.0,
         descricao: "Conjunto de jogo americano elegante e prático, ideal para tornar suas refeições mais especiais.",
         imagem: JogoAmericano3
         },
         {
         id: 7,
         nome: "Jogo de Banheiro",
-        preco: 30.0,
+        preco: 45.0,
         descricao: "Jogo de banheiro delicado e charmoso, perfeito para decorar seu banheiro com estilo.",
         imagem: JogoBanheiro1
         },
         {
         id: 8,
         nome: "Jogo de Banheiro",
-        preco: 30.0,
+        preco: 45.0,
         descricao: "Jogo de banheiro delicado e charmoso, perfeito para decorar seu banheiro com estilo.",
         imagem: JogoBanheiro2
         },
         {
         id: 9,
         nome: "Pano de Prato",
-        preco: 30.0,
+        preco: 9.0,
         descricao: "Pano de prato confeccionado com materiais de alta qualidade, ideal para facilitar suas tarefas na cozinha.",
         imagem: PanoDePrato1
         },
         {
         id: 10,
         nome: "Pano de Prato",
-        preco: 30.0,
+        preco: 9.0,
         descricao: "Pano de prato confeccionado com materiais de alta qualidade, ideal para facilitar suas tarefas na cozinha.",
         imagem: PanoDePrato2
         },
         {
         id: 11,
         nome: "Pano de Prato",
-        preco: 30.0,
+        preco: 9.0,
         descricao: "Pano de prato confeccionado com materiais de alta qualidade, ideal para facilitar suas tarefas na cozinha.",
         imagem: PanoDePrato3
         },
         {
         id: 12,
         nome: "Pano de Prato",
-        preco: 30.0,
+        preco: 9.0,
         descricao: "Pano de prato confeccionado com materiais de alta qualidade, ideal para facilitar suas tarefas na cozinha.",
         imagem: PanoDePrato4
         },
         {
         id: 13,
         nome: "Passadeira",
-        preco: 30.0,
+        preco: 50.0,
         descricao: "Passadeira elegante e funcional, perfeita para dar um toque especial à decoração da sua casa.",
         imagem: Passadeira1
         },

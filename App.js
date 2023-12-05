@@ -82,9 +82,9 @@ function App() {
             } else if (route.name === 'Contato') {
               iconName = focused ? 'call' : 'call-outline';
             } else if (route.name === 'Produtos') {
-              iconName = focused ? 'list' : 'list-outline';
+              iconName = focused ? 'book' : 'book-outline';
             } else if (route.name === 'Lista') {
-              iconName = focused ? 'list' : 'list-outline';
+              iconName = focused ? 'heart' : 'heart-outline';
             } else if (route.name === 'Tire uma Foto!') {
               iconName = focused ? 'camera' : 'camera-outline'; // Ícone para a aba 'Foto'
             }
@@ -96,10 +96,9 @@ function App() {
       >
         <Tab.Screen name="Home" component={Home} options={{ headerShown: false }}/>
         <Tab.Screen name="Catálogo" component={MenuCatalogo} options={{ headerShown: false }}/>
-        <Tab.Screen name="Lista de Desejos" component={MenuListaDesejos} options={{ headerShown: false }}/>
-        <Tab.Screen name="Contato" component={MenuContato} options={{ headerShown: false }}/>
         <Tab.Screen name="Produtos" component={Produtos} options={{ headerShown: false }}/>
         <Tab.Screen name="Lista" component={ListaDesejos} options={{ headerShown: false, unmountOnBlur: true }}/>
+        <Tab.Screen name="Contato" component={MenuContato} options={{ headerShown: false }}/>
         <Tab.Screen name="Tire uma Foto!" component={Foto} options={{ headerShown: false }}/>
       </Tab.Navigator>
     </NavigationContainer>
