@@ -47,8 +47,6 @@ const estilos = StyleSheet.create({
         width: 81.3,
         height: 100,
         borderRadius: 5,
-        borderWidth: 2,
-        borderColor: "#660066",
     },
     conteudo: {
         marginTop: 5,

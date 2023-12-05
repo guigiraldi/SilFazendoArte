@@ -41,7 +41,7 @@ export default function Home() {
 
 const estilos = StyleSheet.create({
   piadaDoDia: {
-    margin: 10,
+    margin: 5,
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
