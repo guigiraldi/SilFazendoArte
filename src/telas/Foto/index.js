@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Image, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Texto from '../../componentes/Texto';
@@ -44,21 +44,26 @@ export default function Foto({ route }) {
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} type={type} ref={cameraRef}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Texto style={styles.text}>Alternar Camera</Texto>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={tirarFoto}>
-            <Text style={styles.text}>Tirar Foto</Text>
+        <View style={styles.content}>
+          {/* Use o ImageBackground para criar um botão de tirar foto redondo */}
+          <TouchableOpacity style={styles.captureButton} onPress={tirarFoto}>
+            <ImageBackground
+              source={require('../../../assets/tirarFoto.png')}
+              style={styles.captureButtonBackground}
+            >
+            </ImageBackground>
           </TouchableOpacity>
         </View>
       </Camera>
+      <TouchableOpacity style={styles.toggleCameraButton} onPress={toggleCameraType}>
+        {/* Adicione a imagem para o botão de alternar câmera */}
+        <Image source={require('../../../assets/alternar.png')} style={{ width: 30, height: 30 }} />
+      </TouchableOpacity>
       {capturedImage && typeof capturedImage === 'string' && (
         <Image source={{ uri: capturedImage }} style={{ flex: 1 }} />
       )}
     </View>
   );
-  
 }
 
 
@@ -84,5 +89,25 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
+  },
+
+  content: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  toggleCameraButton: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+  },
+  captureButton: {
+    marginBottom: 20, // Espaço entre o botão e a borda inferior da tela
+  },
+  captureButtonBackground: {
+    width: 70,
+    height: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
