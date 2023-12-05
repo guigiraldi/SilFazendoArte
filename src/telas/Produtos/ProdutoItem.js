@@ -5,17 +5,21 @@ import CampoInteiro from '../../componentes/CampoInteiro';
 import Botao from '../../componentes/Botao';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Button, Image } from 'react-native-elements';
+import Texto from '../../componentes/Texto';
 
-export default function ProdutoItem({ id, nome, descricao, preco }) {
+export default function ProdutoItem({ id, nome, descricao, preco, imagem }) {
 
     //Função para salvar o produto na Lista de Desejos​
-    async function addListaDesejos(id, nome, preco, descricao, quantidade) {
+    async function addListaDesejos(id, nome, preco, descricao, quantidade, imagem) {
+        console.log('addListaDesejos chamada com:', id, nome, preco, descricao, quantidade);
 
         //item da lista que vem do parâmetro​
-        const addProduto = [{ id: id, nome: nome, preco: preco, descricao: descricao, quantidade: quantidade, }]
+        const addProduto = [{ id: id, nome: nome, preco: preco, descricao: descricao, quantidade: quantidade, imagem: imagem }]
 
         //Captura a lista de desejos existente para atualizar o novo item​
         const listaDesejosSalva = await AsyncStorage.getItem('ListaDesejos');
+        console.log('Lista de Desejos antes da atualização:', listaDesejosSalva);
 
         //Verifica se a lista já existe - caso de ser a partir do 2º produto​
         if (listaDesejosSalva !== null) {
@@ -25,7 +29,7 @@ export default function ProdutoItem({ id, nome, descricao, preco }) {
             const listaDesejos = JSON.parse(listaDesejosSalva);
             //Guarda no JSON o novo item inserido na lista​
 
-            listaDesejos.push({ id: id, nome: nome, preco: preco, descricao: descricao, quantidade: quantidade, });
+            listaDesejos.push({ id: id, nome: nome, preco: preco, descricao: descricao, quantidade: quantidade, imagem: imagem });
             //Converte o objeto JSON em string​
 
             const listaDesejosAtualizada = JSON.stringify(listaDesejos);
@@ -38,7 +42,6 @@ export default function ProdutoItem({ id, nome, descricao, preco }) {
             //ASyncStorage está vazio, inclui o primeiro item​
 
             //Converte a lista para String​
-
             const listaDesejosAtualizada = JSON.stringify(addProduto);
 
             //Guarda o produto no AsyncStorage​
@@ -46,6 +49,8 @@ export default function ProdutoItem({ id, nome, descricao, preco }) {
             Alert.alert("Produto inserido com sucesso na Lista de Desejos");
             console.log("Inseriu o item na lista.");
         }
+
+        console.log('Lista de Desejos após a atualização:', await AsyncStorage.getItem('ListaDesejos'));
     }
 
     //Variáveis de estado (hooks)​
@@ -64,35 +69,51 @@ export default function ProdutoItem({ id, nome, descricao, preco }) {
     }
 
     const inverteExpandir = () => {
-        //Pega o estado atual do expandir e nega ele​
+        console.log('Expandir antes:', expandir);
         setExpandir(!expandir);
 
         //Volta a quantidade para o estado padrão​
         atualizaQuantidadeTotal(1);
+        console.log('Expandir depois:', expandir);
     }
 
-    return <>
-        <TouchableOpacity style={estilos.informacao} onPress={inverteExpandir}>
-            <Text style={estilos.nome}>{nome}</Text>
-            <Text style={estilos.descricao}>{descricao}</Text>
-            <Text style={estilos.preco}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco)} </Text>
-        </TouchableOpacity>
-        {expandir &&
-            <View style={estilos.carrinho}>
-                <View>
-                    <View style={estilos.valor}>
-                        <Text style={estilos.descricao}>Quantidade:</Text>
-                        <CampoInteiro estilos={estilos.quantidade} valor={quantidade} acao={atualizaQuantidadeTotal} />
+    return (
+        <>
+            <TouchableOpacity style={estilos.produto} onPress={inverteExpandir}>
+                <Image style={estilos.imagem} source={imagem} />
+                <View style={estilos.conteudo}>
+                    <View style={estilos.textos}>
+                        <Text style={estilos.tituloprod}>{nome}</Text>
+                        <Texto style={estilos.descricao}>{descricao}</Texto>
                     </View>
-                    <View style={estilos.valor}>
-                        <Text style={estilos.descricao}>Total:</Text>
-                        <Text style={estilos.preco}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)} </Text>
+                    <View style={estilos.base}>
+                        <Text style={estilos.preco}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco)} </Text>
                     </View>
                 </View>
-                <Botao texto='Adicionar na Lista de Desejos' style={estilos.botao} onPress={() => addListaDesejos(id, nome, preco, descricao, quantidade)} />
-            </View>
-        }
-        <View style={estilos.divisor} />
-    </>
+            </TouchableOpacity>
+    
+            {expandir && (
+                <View style={estilos.carrinho}>
+                    <View style={estilos.linhas}>
+                        <View style={estilos.valor}>
+                            <Text style={estilos.subgrupo}>Quantidade:</Text>
+                            <CampoInteiro estilos={estilos.quantidade} valor={quantidade} acao={atualizaQuantidadeTotal} />
+                        </View>
+
+                        <View style={estilos.valor}>
+                            <Text style={estilos.subgrupo}>Total:</Text>
+                            <Text style={estilos.precoTotal}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}</Text>
+                        </View>
+                    </View>
+                    <Button
+                        style={estilos.botao}
+                        title="Adicionar!"
+                        onPress={async () => await addListaDesejos(id, nome, preco, descricao, quantidade, imagem)}
+                    />
+                </View>
+            )}
+        </>
+    );    
+    
 }
 

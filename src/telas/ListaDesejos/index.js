@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import ProdutoItem from './ProdutoItem';
 import TelaPadrao from '../../componentes/TelaPadrao';
 import StatusLista from '../../componentes/StatusLista';
+import Topo from '../../componentes/Topo';
 
 export default function ListaDesejos() {
 
@@ -23,11 +24,23 @@ export default function ListaDesejos() {
     }, []);
     //Cálculo do valor total da Lista de Desejos​
     const val_total = listData.reduce((soma, { preco, quantidade }) => soma + (preco * quantidade), 0);
+    
     return <TelaPadrao>
-        <StatusLista total={val_total} />
         <FlatList
+         ListHeaderComponent={() => {
+            return <>
+            <Topo titulo="Lista de Desejos" />
+            </>
+        }}
+        ListFooterComponent={() => {
+            return <>
+            <StatusLista total={val_total} />
+            </>
+        }}
             data={listData}
             renderItem={({ item }) => <ProdutoItem {...item} />}
-            keyExtractor={({ id }) => String(id)} />
+            keyExtractor={({ id }) => String(id)} 
+        />
+    
     </TelaPadrao>
 }

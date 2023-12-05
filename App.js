@@ -99,7 +99,7 @@ function App() {
         <Tab.Screen name="Lista de Desejos" component={MenuListaDesejos} options={{ headerShown: false }}/>
         <Tab.Screen name="Contato" component={MenuContato} options={{ headerShown: false }}/>
         <Tab.Screen name="Produtos" component={Produtos} options={{ headerShown: false }}/>
-        <Tab.Screen name="Lista" component={ListaDesejos} options={{ headerShown: false }}/>
+        <Tab.Screen name="Lista" component={ListaDesejos} options={{ headerShown: false, unmountOnBlur: true }}/>
         <Tab.Screen name="Tire uma Foto!" component={Foto} options={{ headerShown: false }}/>
       </Tab.Navigator>
     </NavigationContainer>
