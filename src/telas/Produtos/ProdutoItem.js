@@ -107,7 +107,7 @@ export default function ProdutoItem({ id, nome, descricao, preco, imagem }) {
                     </View>
                     <Button
                         style={estilos.botao}
-                        title="Adicionar!"
+                        title="Adicionar"
                         onPress={async () => await addListaDesejos(id, nome, preco, descricao, quantidade, imagem)}
                     />
                 </View>

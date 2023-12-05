@@ -127,56 +127,56 @@ const produtos = [
         {
         id: 14,
         nome: "Pulseiras de Cristal",
-        preco: 30.0,
+        preco: 35.0,
         descricao: "Conjunto de pulseiras delicadas com cristais, ideais para complementar seus looks com sofisticação.",
         imagem: Pulseira1
         },
         {
         id: 15,
         nome: "Pulseiras de Cristal",
-        preco: 30.0,
+        preco: 35.0,
         descricao: "Conjunto de pulseiras delicadas com cristais, ideais para complementar seus looks com sofisticação.",
         imagem: Pulseira2
         },
         {
         id: 16,
         nome: "SunCatcher",
-        preco: 30.0,
+        preco: 90.0,
         descricao: "SunCatcher artesanal, perfeito para adornar sua casa e capturar a luz de maneira encantadora.",
         imagem: SunCatcher1
         },
         {
         id: 17,
         nome: "SunCatcher",
-        preco: 30.0,
+        preco: 90.0,
         descricao: "SunCatcher artesanal, perfeito para adornar sua casa e capturar a luz de maneira encantadora.",
         imagem: SunCatcher2
         },
         {
         id: 18,
         nome: "SunCatcher",
-        preco: 30.0,
+        preco: 90.0,
         descricao: "SunCatcher artesanal, perfeito para adornar sua casa e capturar a luz de maneira encantadora.",
         imagem: SunCatcher3
         },
         {
         id: 19,
         nome: "SunCatcher",
-        preco: 30.0,
+        preco: 90.0,
         descricao: "SunCatcher artesanal, perfeito para adornar sua casa e capturar a luz de maneira encantadora.",
         imagem: SunCatcher4
         },
         {
         id: 20,
         nome: "SunCatcher",
-        preco: 30.0,
+        preco: 90.0,
         descricao: "SunCatcher artesanal, perfeito para adornar sua casa e capturar a luz de maneira encantadora.",
         imagem: SunCatcher5
         },
         {
         id: 21,
         nome: "SunCatcher",
-        preco: 30.0,
+        preco: 90.0,
         descricao: "SunCatcher artesanal, perfeito para adornar sua casa e capturar a luz de maneira encantadora.",
         imagem: SunCatcher6
         },
@@ -197,7 +197,7 @@ const produtos = [
         {
         id: 24,
         nome: "Toalha para Lavabo",
-        preco: 30.0,
+        preco: 10.0,
         descricao: "Toalha elegante para lavabo, confeccionada com materiais de alta qualidade para adicionar sofisticação ao seu banheiro.",
         imagem: Toalha1
         }

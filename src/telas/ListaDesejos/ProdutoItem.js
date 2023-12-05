@@ -39,10 +39,9 @@ export default function ProdutoItem({ id, nome, descricao, preco, imagem, quanti
                     <Text style={estilos.preco}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)} </Text>
                 <View style={estilos.carrinho}>
                     <Text style={estilos.subgrupo}>Quantidade: {quantidade} </Text>
-                    <Button style={estilos.botao} title="Remover!" onPress={() => removeProdListaDesejos(id)} />
+                    <Button style={estilos.botao} title="Remover" onPress={() => removeProdListaDesejos(id)} />
                 </View>
             </View>
-            
         </View>
     </>
 }
